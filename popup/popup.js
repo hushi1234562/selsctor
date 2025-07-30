@@ -121,12 +121,23 @@ class PopupController {
   async activateVisualPicker() {
     try {
       this.updateStatus('Activating visual picker...');
-      
+
+      // First check if we can access the current page
+      if (!await this.checkPageAccess()) {
+        return;
+      }
+
+      // Ensure content script is injected
+      if (!await this.ensureContentScriptReady()) {
+        this.showError('Failed to initialize content script. Please refresh the page and try again.');
+        return;
+      }
+
       const response = await this.sendMessageToContentScript({
         action: 'startPicker'
       });
 
-      if (response.success) {
+      if (response && response.success) {
         this.isPickerActive = true;
         this.updateMethodButtonStates('visual');
         this.updateStatus('Click elements on the page to select them');
@@ -135,7 +146,14 @@ class PopupController {
         this.showError('Failed to activate visual picker');
       }
     } catch (error) {
-      this.showError('Error activating visual picker: ' + error.message);
+      console.error('Visual picker activation error:', error);
+      if (error.message.includes('Could not establish connection')) {
+        this.showError('Could not connect to page. Please refresh the page and try again.');
+      } else if (error.message.includes('Extension context invalidated')) {
+        this.showError('Extension was reloaded. Please refresh the page and try again.');
+      } else {
+        this.showError('Error activating visual picker: ' + error.message);
+      }
     }
   }
 
@@ -195,7 +213,7 @@ class PopupController {
   async testSelector() {
     const input = document.getElementById('selector-input');
     const selector = input.value.trim();
-    
+
     if (!selector) {
       this.showSelectorFeedback('Please enter a selector', 'error');
       return;
@@ -203,26 +221,37 @@ class PopupController {
 
     try {
       this.updateStatus('Testing selector...');
-      
+
+      // Check page access and content script readiness
+      if (!await this.checkPageAccess() || !await this.ensureContentScriptReady()) {
+        this.showSelectorFeedback('Cannot access page. Please refresh and try again.', 'error');
+        return;
+      }
+
       const response = await this.sendMessageToContentScript({
         action: 'highlightElements',
         selectors: [selector]
       });
 
-      if (response.success) {
+      if (response && response.success) {
         this.showSelectorFeedback('Selector is valid and elements are highlighted', 'success');
       } else {
         this.showSelectorFeedback('Invalid selector or no elements found', 'error');
       }
     } catch (error) {
-      this.showSelectorFeedback('Error testing selector: ' + error.message, 'error');
+      console.error('Test selector error:', error);
+      if (error.message.includes('Could not establish connection')) {
+        this.showSelectorFeedback('Could not connect to page. Please refresh and try again.', 'error');
+      } else {
+        this.showSelectorFeedback('Error testing selector: ' + error.message, 'error');
+      }
     }
   }
 
   async addSelector() {
     const input = document.getElementById('selector-input');
     const selector = input.value.trim();
-    
+
     if (!selector) {
       this.showSelectorFeedback('Please enter a selector', 'error');
       return;
@@ -230,14 +259,20 @@ class PopupController {
 
     try {
       this.updateStatus('Adding elements...');
-      
+
+      // Check page access and content script readiness
+      if (!await this.checkPageAccess() || !await this.ensureContentScriptReady()) {
+        this.showSelectorFeedback('Cannot access page. Please refresh and try again.', 'error');
+        return;
+      }
+
       const response = await this.sendMessageToContentScript({
         action: 'selectBySelector',
         selector: selector,
         selectorType: this.currentSelectorType
       });
 
-      if (response.success) {
+      if (response && response.success) {
         input.value = '';
         this.showSelectorFeedback('Elements added to selection', 'success');
         await this.loadSelectedElementsCount();
@@ -245,7 +280,12 @@ class PopupController {
         this.showSelectorFeedback('Failed to select elements', 'error');
       }
     } catch (error) {
-      this.showSelectorFeedback('Error adding selector: ' + error.message, 'error');
+      console.error('Add selector error:', error);
+      if (error.message.includes('Could not establish connection')) {
+        this.showSelectorFeedback('Could not connect to page. Please refresh and try again.', 'error');
+      } else {
+        this.showSelectorFeedback('Error adding selector: ' + error.message, 'error');
+      }
     }
   }
 
@@ -367,6 +407,66 @@ class PopupController {
         }
       });
     });
+  }
+
+  async checkPageAccess() {
+    const url = this.currentTab.url;
+
+    // Check if it's a restricted page
+    if (url.startsWith('chrome://') ||
+        url.startsWith('chrome-extension://') ||
+        url.startsWith('edge://') ||
+        url.startsWith('about:') ||
+        url.startsWith('moz-extension://')) {
+      this.showError('Cannot access browser internal pages');
+      return false;
+    }
+
+    // Check if it's a local file without permissions
+    if (url.startsWith('file://')) {
+      this.showError('Cannot access local files. Please enable "Allow access to file URLs" in extension settings.');
+      return false;
+    }
+
+    return true;
+  }
+
+  async ensureContentScriptReady() {
+    try {
+      // Try to ping the content script
+      const response = await this.sendMessageToContentScript({ action: 'ping' });
+      return response && response.success;
+    } catch (error) {
+      console.log('Content script not ready, attempting to inject...');
+
+      try {
+        // Inject content scripts manually
+        await chrome.scripting.executeScript({
+          target: { tabId: this.currentTab.id },
+          files: [
+            'content/validator.js',
+            'content/data-extractor.js',
+            'content/element-picker.js',
+            'content/content.js'
+          ]
+        });
+
+        await chrome.scripting.insertCSS({
+          target: { tabId: this.currentTab.id },
+          files: ['styles/common.css']
+        });
+
+        // Wait a bit for scripts to initialize
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        // Try to ping again
+        const response = await this.sendMessageToContentScript({ action: 'ping' });
+        return response && response.success;
+      } catch (injectionError) {
+        console.error('Failed to inject content script:', injectionError);
+        return false;
+      }
+    }
   }
 
   handleContentScriptEvent(event, data) {

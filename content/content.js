@@ -40,6 +40,10 @@ class HTMLElementSelector {
   async handleMessage(message, sender, sendResponse) {
     try {
       switch (message.action) {
+        case 'ping':
+          sendResponse({ success: true, ready: true });
+          break;
+
         case 'startPicker':
           this.startElementPicker();
           sendResponse({ success: true });
