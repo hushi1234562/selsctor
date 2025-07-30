@@ -120,7 +120,7 @@ class PopupController {
 
   async activateVisualPicker() {
     try {
-      this.updateStatus('Activating visual picker...');
+      this.updateStatus(i18n.getStatusMessage('activatingPicker'));
 
       // First check if we can access the current page
       if (!await this.checkPageAccess()) {
@@ -140,10 +140,10 @@ class PopupController {
       if (response && response.success) {
         this.isPickerActive = true;
         this.updateMethodButtonStates('visual');
-        this.updateStatus('Click elements on the page to select them');
+        this.updateStatus(i18n.getStatusMessage('clickElements'));
         this.hideSelectorInput();
       } else {
-        this.showError('Failed to activate visual picker');
+        this.showError(i18n.getErrorMessage('failedActivatePicker'));
       }
     } catch (error) {
       console.error('Visual picker activation error:', error);
@@ -160,17 +160,17 @@ class PopupController {
   showSelectorInput(type) {
     this.currentSelectorType = type;
     this.updateMethodButtonStates(type);
-    
+
     const section = document.getElementById('selector-input-section');
     const input = document.getElementById('selector-input');
-    
+
     section.style.display = 'block';
-    input.placeholder = type === 'xpath' 
-      ? 'Enter XPath expression (e.g., //div[@class="example"])...'
-      : 'Enter CSS selector (e.g., .class-name, #id, div.example)...';
-    
+    input.placeholder = type === 'xpath'
+      ? i18n.getMessage('xpathPlaceholder')
+      : i18n.getMessage('cssSelectorPlaceholder');
+
     input.focus();
-    
+
     if (this.isPickerActive) {
       this.deactivateVisualPicker();
     }
@@ -253,12 +253,12 @@ class PopupController {
     const selector = input.value.trim();
 
     if (!selector) {
-      this.showSelectorFeedback('Please enter a selector', 'error');
+      this.showSelectorFeedback(i18n.getErrorMessage('enterSelector'), 'error');
       return;
     }
 
     try {
-      this.updateStatus('Adding elements...');
+      this.updateStatus(i18n.getStatusMessage('addingElements'));
 
       // Check page access and content script readiness
       if (!await this.checkPageAccess() || !await this.ensureContentScriptReady()) {
@@ -274,10 +274,10 @@ class PopupController {
 
       if (response && response.success) {
         input.value = '';
-        this.showSelectorFeedback('Elements added to selection', 'success');
+        this.showSelectorFeedback(i18n.getSuccessMessage('elementsAdded'), 'success');
         await this.loadSelectedElementsCount();
       } else {
-        this.showSelectorFeedback('Failed to select elements', 'error');
+        this.showSelectorFeedback(i18n.getErrorMessage('failedSelectElements'), 'error');
       }
     } catch (error) {
       console.error('Add selector error:', error);
@@ -324,6 +324,9 @@ class PopupController {
     if (countElement) {
       countElement.textContent = count;
     }
+
+    // Update the text next to the count with proper localization
+    i18n.updateCountDisplay('selected-count', count, 'elementsSelected');
   }
 
   updateSelectedElementsDisplay() {
@@ -513,7 +516,7 @@ class PopupController {
   // Export functionality
   exportData(format) {
     if (!this.extractedData || this.extractedData.length === 0) {
-      this.showError('No data to export. Please extract data first.');
+      this.showError(i18n.getErrorMessage('noDataToExport'));
       return;
     }
 
@@ -654,7 +657,7 @@ class PopupController {
     }
 
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const filename = `html-elements-${timestamp}.${this.currentExportFormat}`;
+    const filename = i18n.getExportFilename(this.currentExportFormat, timestamp);
 
     const blob = new Blob([this.currentExportContent], {
       type: this.currentExportFormat === 'json' ? 'application/json' : 'text/csv'
@@ -670,7 +673,7 @@ class PopupController {
       if (chrome.runtime.lastError) {
         this.showError('Download failed: ' + chrome.runtime.lastError.message);
       } else {
-        this.updateStatus('Export downloaded successfully');
+        this.updateStatus(i18n.getSuccessMessage('exportDownloaded'));
       }
       URL.revokeObjectURL(url);
     });

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML元素选择器 - 中文测试页面</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #f5f5f5;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        .header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .product-card {
+            border: none;
+            border-radius: 12px;
+            padding: 25px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .product-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        .product-price {
+            font-size: 24px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .product-description {
+            color: #666;
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .product-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .product-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        .article-section {
+            margin-bottom: 40px;
+        }
+        .article {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid #3498db;
+        }
+        .article-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+        .article-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .article-title a:hover {
+            color: #3498db;
+        }
+        .article-meta {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .contact-info {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .contact-info h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        .contact-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .contact-label {
+            font-weight: bold;
+            display: inline-block;
+            width: 80px;
+            color: #34495e;
+        }
+        .contact-value {
+            color: #2c3e50;
+        }
+        .dynamic-content {
+            border: 2px dashed #bdc3c7;
+            padding: 30px;
+            text-align: center;
+            margin: 25px 0;
+            border-radius: 12px;
+            background: white;
+        }
+        .tag {
+            display: inline-block;
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin: 3px;
+            font-weight: 500;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .load-button {
+            background: linear-gradient(45deg, #00b894, #00a085);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .load-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.4);
+        }
+        .load-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 id="main-title">HTML元素选择器测试页面</h1>
+        <p>这个页面包含各种中文元素，用于测试HTML元素选择器扩展的多语言功能。</p>
+    </div>
+
+    <section class="product-section">
+        <h2 class="section-title">产品目录</h2>
+        <div class="product-grid">
+            <div class="product-card" data-product-id="1" data-category="电子产品">
+                <img src="https://via.placeholder.com/300x200/667eea/white?text=游戏笔记本" alt="游戏笔记本" class="product-image">
+                <div class="product-title">高性能游戏笔记本</div>
+                <div class="product-price">¥9,999</div>
+                <div class="product-description">配备最新RTX显卡和高速SSD存储的专业游戏笔记本电脑，为您带来极致的游戏体验。</div>
+                <div class="product-tags">
+                    <span class="tag">游戏专用</span>
+                    <span class="tag">高性能</span>
+                    <span class="tag">RTX显卡</span>
+                </div>
+                <a href="/products/gaming-laptop" class="product-link" target="_blank">查看详情</a>
+            </div>
+
+            <div class="product-card" data-product-id="2" data-category="电子产品">
+                <img src="https://via.placeholder.com/300x200/e17055/white?text=智能手机" alt="智能手机" class="product-image">
+                <div class="product-title">旗舰智能手机</div>
+                <div class="product-price">¥6,999</div>
+                <div class="product-description">搭载先进摄像系统和5G网络连接的最新旗舰智能手机，让您随时保持连接。</div>
+                <div class="product-tags">
+                    <span class="tag">5G网络</span>
+                    <span class="tag">专业摄影</span>
+                    <span class="tag">旗舰配置</span>
+                </div>
+                <a href="/products/flagship-phone" class="product-link" target="_blank">查看详情</a>
+            </div>
+
+            <div class="product-card" data-product-id="3" data-category="配件">
+                <img src="https://via.placeholder.com/300x200/a29bfe/white?text=无线耳机" alt="无线耳机" class="product-image">
+                <div class="product-title">降噪无线耳机</div>
+                <div class="product-price">¥1,599</div>
+                <div class="product-description">采用主动降噪技术和长续航设计的高品质无线耳机，为您提供沉浸式音频体验。</div>
+                <div class="product-tags">
+                    <span class="tag">无线连接</span>
+                    <span class="tag">主动降噪</span>
+                    <span class="tag">长续航</span>
+                </div>
+                <a href="/products/wireless-headphones" class="product-link" target="_blank">查看详情</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2 class="section-title">最新文章</h2>
+        
+        <article class="article" data-article-id="1">
+            <h3 class="article-title">
+                <a href="/articles/tech-trends-2024">2024年科技发展趋势</a>
+            </h3>
+            <div class="article-meta">
+                <span class="author">作者：张三</span> | 
+                <span class="date">2024年1月15日</span> | 
+                <span class="category">科技</span>
+            </div>
+            <p>探索将在2024年塑造科技行业的最重要趋势，包括人工智能、量子计算和可持续技术的发展...</p>
+        </article>
+
+        <article class="article" data-article-id="2">
+            <h3 class="article-title">
+                <a href="/articles/web-development-guide">现代Web开发最佳实践</a>
+            </h3>
+            <div class="article-meta">
+                <span class="author">作者：李四</span> | 
+                <span class="date">2024年1月12日</span> | 
+                <span class="category">开发</span>
+            </div>
+            <p>了解现代Web开发中的最新最佳实践，包括性能优化、安全性和用户体验设计...</p>
+        </article>
+
+        <article class="article" data-article-id="3">
+            <h3 class="article-title">
+                <a href="/articles/ai-business">人工智能在商业中的应用</a>
+            </h3>
+            <div class="article-meta">
+                <span class="author">作者：王五</span> | 
+                <span class="date">2024年1月10日</span> | 
+                <span class="category">人工智能</span>
+            </div>
+            <p>发现人工智能和机器学习如何改变商业运营，提高效率并创造新的商业机会...</p>
+        </article>
+    </section>
+
+    <section class="contact-section">
+        <h2 class="section-title">联系信息</h2>
+        
+        <div class="contact-info" data-contact-type="总部">
+            <h3>总部办公室</h3>
+            <div class="contact-item">
+                <span class="contact-label">地址：</span>
+                <span class="contact-value">北京市朝阳区科技园区123号</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">电话：</span>
+                <span class="contact-value">010-12345678</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">邮箱：</span>
+                <span class="contact-value">info@example.com.cn</span>
+            </div>
+        </div>
+
+        <div class="contact-info" data-contact-type="客服">
+            <h3>客服中心</h3>
+            <div class="contact-item">
+                <span class="contact-label">电话：</span>
+                <span class="contact-value">400-123-4567</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">邮箱：</span>
+                <span class="contact-value">support@example.com.cn</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">服务时间：</span>
+                <span class="contact-value">7×24小时在线服务</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="dynamic-section">
+        <h2 class="section-title">动态内容</h2>
+        <div class="dynamic-content" id="dynamic-container">
+            <p>正在加载动态内容...</p>
+        </div>
+        <button onclick="loadDynamicContent()" id="load-button" class="load-button">加载动态内容</button>
+    </section>
+
+    <script>
+        function loadDynamicContent() {
+            const container = document.getElementById('dynamic-container');
+            const button = document.getElementById('load-button');
+            
+            button.disabled = true;
+            button.textContent = '加载中...';
+            
+            setTimeout(() => {
+                container.innerHTML = `
+                    <div class="dynamic-item" data-dynamic-id="1">
+                        <h4>动态项目 1</h4>
+                        <p>这个内容是通过JavaScript动态加载的，用于测试扩展对动态内容的处理能力。</p>
+                        <span class="timestamp">加载时间: ${new Date().toLocaleTimeString('zh-CN')}</span>
+                    </div>
+                    <div class="dynamic-item" data-dynamic-id="2">
+                        <h4>动态项目 2</h4>
+                        <p>这演示了扩展如何处理动态加载的中文内容，包括实时监控DOM变化。</p>
+                        <span class="timestamp">加载时间: ${new Date().toLocaleTimeString('zh-CN')}</span>
+                    </div>
+                `;
+                button.textContent = '重新加载动态内容';
+                button.disabled = false;
+            }, 2000);
+        }
+
+        // 页面加载时的动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                const cards = document.querySelectorAll('.product-card, .article, .contact-info');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(30px)';
+                        card.style.transition = 'all 0.6s ease';
+                        
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    }, index * 150);
+                });
+            }, 300);
+        });
+    </script>
+</body>
+</html>

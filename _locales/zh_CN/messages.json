@@ -1,0 +1,234 @@
+{
+  "extensionName": {
+    "message": "HTML元素选择器",
+    "description": "扩展名称"
+  },
+  "extensionDescription": {
+    "message": "使用CSS选择器、XPath或可视化元素选择器从网页中提取和检索特定的HTML元素",
+    "description": "扩展描述"
+  },
+  "popupTitle": {
+    "message": "元素选择器",
+    "description": "弹窗中显示的标题"
+  },
+  "statusReady": {
+    "message": "就绪",
+    "description": "扩展就绪时的状态"
+  },
+  "tabSelect": {
+    "message": "选择",
+    "description": "选择标签页标签"
+  },
+  "tabExtract": {
+    "message": "提取",
+    "description": "提取标签页标签"
+  },
+  "tabExport": {
+    "message": "导出",
+    "description": "导出标签页标签"
+  },
+  "selectionMethod": {
+    "message": "选择方式",
+    "description": "选择方式部分标题"
+  },
+  "visualPicker": {
+    "message": "可视化选择",
+    "description": "可视化选择按钮文本"
+  },
+  "cssSelector": {
+    "message": "CSS选择器",
+    "description": "CSS选择器按钮文本"
+  },
+  "xpath": {
+    "message": "XPath",
+    "description": "XPath按钮文本"
+  },
+  "enterSelector": {
+    "message": "输入选择器",
+    "description": "输入选择器部分标题"
+  },
+  "cssSelectorPlaceholder": {
+    "message": "输入CSS选择器 (例如: .class-name, #id, div.example)...",
+    "description": "CSS选择器输入框占位符"
+  },
+  "xpathPlaceholder": {
+    "message": "输入XPath表达式 (例如: //div[@class=\"example\"])...",
+    "description": "XPath输入框占位符"
+  },
+  "testButton": {
+    "message": "测试",
+    "description": "测试按钮文本"
+  },
+  "addButton": {
+    "message": "添加",
+    "description": "添加按钮文本"
+  },
+  "selectedElements": {
+    "message": "已选择元素",
+    "description": "已选择元素部分标题"
+  },
+  "elementsSelected": {
+    "message": "个元素已选择",
+    "description": "显示已选择元素数量的文本"
+  },
+  "clearButton": {
+    "message": "清除",
+    "description": "清除按钮文本"
+  },
+  "extractionOptions": {
+    "message": "提取选项",
+    "description": "提取选项部分标题"
+  },
+  "textContent": {
+    "message": "文本内容",
+    "description": "文本内容选项"
+  },
+  "htmlContent": {
+    "message": "HTML内容",
+    "description": "HTML内容选项"
+  },
+  "attributes": {
+    "message": "属性",
+    "description": "属性选项"
+  },
+  "computedStyles": {
+    "message": "计算样式",
+    "description": "计算样式选项"
+  },
+  "positionSize": {
+    "message": "位置和大小",
+    "description": "位置和大小选项"
+  },
+  "links": {
+    "message": "链接",
+    "description": "链接选项"
+  },
+  "images": {
+    "message": "图片",
+    "description": "图片选项"
+  },
+  "includeChildren": {
+    "message": "包含子元素",
+    "description": "包含子元素选项"
+  },
+  "advancedOptions": {
+    "message": "高级选项",
+    "description": "高级选项部分标题"
+  },
+  "maxDepth": {
+    "message": "最大深度：",
+    "description": "最大深度标签"
+  },
+  "extractDataButton": {
+    "message": "提取数据",
+    "description": "提取数据按钮文本"
+  },
+  "extractionResults": {
+    "message": "提取结果",
+    "description": "提取结果部分标题"
+  },
+  "elementsProcessed": {
+    "message": "个元素已处理",
+    "description": "显示已处理元素数量的文本"
+  },
+  "exportFormat": {
+    "message": "导出格式",
+    "description": "导出格式部分标题"
+  },
+  "jsonFormat": {
+    "message": "JSON",
+    "description": "JSON格式选项"
+  },
+  "csvFormat": {
+    "message": "CSV",
+    "description": "CSV格式选项"
+  },
+  "exportOptions": {
+    "message": "导出选项",
+    "description": "导出选项部分标题"
+  },
+  "includeMetadata": {
+    "message": "包含元数据",
+    "description": "包含元数据选项"
+  },
+  "flattenData": {
+    "message": "展平嵌套数据",
+    "description": "展平数据选项"
+  },
+  "includeTimestamp": {
+    "message": "包含时间戳",
+    "description": "包含时间戳选项"
+  },
+  "exportPreview": {
+    "message": "导出预览",
+    "description": "导出预览部分标题"
+  },
+  "downloadButton": {
+    "message": "下载",
+    "description": "下载按钮文本"
+  },
+  "statusActivatingPicker": {
+    "message": "正在激活可视化选择器...",
+    "description": "激活选择器时的状态"
+  },
+  "statusClickElements": {
+    "message": "点击页面上的元素来选择它们",
+    "description": "选择器的状态指示"
+  },
+  "statusTestingSelector": {
+    "message": "正在测试选择器...",
+    "description": "测试选择器时的状态"
+  },
+  "statusAddingElements": {
+    "message": "正在添加元素...",
+    "description": "添加元素时的状态"
+  },
+  "statusExtractingData": {
+    "message": "正在提取数据...",
+    "description": "提取数据时的状态"
+  },
+  "errorFailedActivatePicker": {
+    "message": "无法激活可视化选择器",
+    "description": "选择器激活失败时的错误"
+  },
+  "errorEnterSelector": {
+    "message": "请输入选择器",
+    "description": "未输入选择器时的错误"
+  },
+  "errorInvalidSelector": {
+    "message": "无效的选择器或未找到元素",
+    "description": "无效选择器的错误"
+  },
+  "errorFailedSelectElements": {
+    "message": "选择元素失败",
+    "description": "选择失败时的错误"
+  },
+  "errorFailedExtractData": {
+    "message": "提取数据失败",
+    "description": "提取失败时的错误"
+  },
+  "errorNoDataToExport": {
+    "message": "没有数据可导出。请先提取数据。",
+    "description": "没有数据导出时的错误"
+  },
+  "errorDownloadFailed": {
+    "message": "下载失败",
+    "description": "下载失败时的错误"
+  },
+  "successSelectorValid": {
+    "message": "选择器有效，元素已高亮显示",
+    "description": "有效选择器的成功消息"
+  },
+  "successElementsAdded": {
+    "message": "元素已添加到选择中",
+    "description": "元素添加成功的消息"
+  },
+  "successSelectionCleared": {
+    "message": "选择已清除",
+    "description": "选择清除成功的消息"
+  },
+  "successExportDownloaded": {
+    "message": "导出下载成功",
+    "description": "下载成功的消息"
+  }
+}

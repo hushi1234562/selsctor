@@ -5,57 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTML Element Selector</title>
   <link rel="stylesheet" href="popup.css">
+  <script src="i18n.js"></script>
 </head>
 <body>
   <div class="container">
     <!-- Header -->
     <header class="header">
-      <h1 class="title">Element Selector</h1>
-      <div class="status" id="status">Ready</div>
+      <h1 class="title" data-i18n="popupTitle">Element Selector</h1>
+      <div class="status" id="status" data-i18n="statusReady">Ready</div>
     </header>
 
     <!-- Tab Navigation -->
     <nav class="tabs">
-      <button class="tab-button active" data-tab="select">Select</button>
-      <button class="tab-button" data-tab="extract">Extract</button>
-      <button class="tab-button" data-tab="export">Export</button>
+      <button class="tab-button active" data-tab="select" data-i18n="tabSelect">Select</button>
+      <button class="tab-button" data-tab="extract" data-i18n="tabExtract">Extract</button>
+      <button class="tab-button" data-tab="export" data-i18n="tabExport">Export</button>
     </nav>
 
     <!-- Select Tab -->
     <div class="tab-content active" id="select-tab">
       <div class="section">
-        <h3>Selection Method</h3>
+        <h3 data-i18n="selectionMethod">Selection Method</h3>
         <div class="method-buttons">
           <button id="visual-picker-btn" class="method-btn">
             <span class="icon">🎯</span>
-            Visual Picker
+            <span data-i18n="visualPicker">Visual Picker</span>
           </button>
           <button id="css-selector-btn" class="method-btn">
             <span class="icon">📝</span>
-            CSS Selector
+            <span data-i18n="cssSelector">CSS Selector</span>
           </button>
           <button id="xpath-btn" class="method-btn">
             <span class="icon">🔍</span>
-            XPath
+            <span data-i18n="xpath">XPath</span>
           </button>
         </div>
       </div>
 
       <div class="section" id="selector-input-section" style="display: none;">
-        <h3>Enter Selector</h3>
+        <h3 data-i18n="enterSelector">Enter Selector</h3>
         <div class="input-group">
-          <textarea id="selector-input" placeholder="Enter CSS selector or XPath..."></textarea>
-          <button id="test-selector-btn" class="btn btn-secondary">Test</button>
-          <button id="add-selector-btn" class="btn btn-primary">Add</button>
+          <textarea id="selector-input" data-i18n-placeholder="cssSelectorPlaceholder" placeholder="Enter CSS selector or XPath..."></textarea>
+          <button id="test-selector-btn" class="btn btn-secondary" data-i18n="testButton">Test</button>
+          <button id="add-selector-btn" class="btn btn-primary" data-i18n="addButton">Add</button>
         </div>
         <div id="selector-feedback" class="feedback"></div>
       </div>
 
       <div class="section">
-        <h3>Selected Elements</h3>
+        <h3 data-i18n="selectedElements">Selected Elements</h3>
         <div class="selected-count">
-          <span id="selected-count">0</span> elements selected
-          <button id="clear-selection-btn" class="btn btn-small">Clear</button>
+          <span id="selected-count">0</span> <span data-i18n="elementsSelected">elements selected</span>
+          <button id="clear-selection-btn" class="btn btn-small" data-i18n="clearButton">Clear</button>
         </div>
         <div id="selected-elements-list" class="elements-list"></div>
       </div>
@@ -64,63 +65,63 @@
     <!-- Extract Tab -->
     <div class="tab-content" id="extract-tab">
       <div class="section">
-        <h3>Extraction Options</h3>
+        <h3 data-i18n="extractionOptions">Extraction Options</h3>
         <div class="options-grid">
           <label class="option">
             <input type="checkbox" id="extract-text" checked>
-            <span>Text Content</span>
+            <span data-i18n="textContent">Text Content</span>
           </label>
           <label class="option">
             <input type="checkbox" id="extract-html">
-            <span>HTML Content</span>
+            <span data-i18n="htmlContent">HTML Content</span>
           </label>
           <label class="option">
             <input type="checkbox" id="extract-attributes" checked>
-            <span>Attributes</span>
+            <span data-i18n="attributes">Attributes</span>
           </label>
           <label class="option">
             <input type="checkbox" id="extract-styles">
-            <span>Computed Styles</span>
+            <span data-i18n="computedStyles">Computed Styles</span>
           </label>
           <label class="option">
             <input type="checkbox" id="extract-position">
-            <span>Position & Size</span>
+            <span data-i18n="positionSize">Position & Size</span>
           </label>
           <label class="option">
             <input type="checkbox" id="extract-links" checked>
-            <span>Links</span>
+            <span data-i18n="links">Links</span>
           </label>
           <label class="option">
             <input type="checkbox" id="extract-images" checked>
-            <span>Images</span>
+            <span data-i18n="images">Images</span>
           </label>
           <label class="option">
             <input type="checkbox" id="include-children">
-            <span>Include Children</span>
+            <span data-i18n="includeChildren">Include Children</span>
           </label>
         </div>
       </div>
 
       <div class="section">
-        <h3>Advanced Options</h3>
+        <h3 data-i18n="advancedOptions">Advanced Options</h3>
         <div class="advanced-options">
           <label class="option-row">
-            <span>Max Depth:</span>
+            <span data-i18n="maxDepth">Max Depth:</span>
             <input type="number" id="max-depth" value="3" min="1" max="10">
           </label>
         </div>
       </div>
 
       <div class="section">
-        <button id="extract-data-btn" class="btn btn-primary btn-large">
+        <button id="extract-data-btn" class="btn btn-primary btn-large" data-i18n="extractDataButton">
           Extract Data
         </button>
       </div>
 
       <div class="section" id="extraction-results" style="display: none;">
-        <h3>Extraction Results</h3>
+        <h3 data-i18n="extractionResults">Extraction Results</h3>
         <div class="results-summary">
-          <span id="results-count">0</span> elements processed
+          <span id="results-count">0</span> <span data-i18n="elementsProcessed">elements processed</span>
         </div>
         <div id="results-preview" class="results-preview"></div>
       </div>
@@ -129,43 +130,43 @@
     <!-- Export Tab -->
     <div class="tab-content" id="export-tab">
       <div class="section">
-        <h3>Export Format</h3>
+        <h3 data-i18n="exportFormat">Export Format</h3>
         <div class="format-buttons">
           <button id="export-json-btn" class="format-btn">
             <span class="icon">📄</span>
-            JSON
+            <span data-i18n="jsonFormat">JSON</span>
           </button>
           <button id="export-csv-btn" class="format-btn">
             <span class="icon">📊</span>
-            CSV
+            <span data-i18n="csvFormat">CSV</span>
           </button>
         </div>
       </div>
 
       <div class="section">
-        <h3>Export Options</h3>
+        <h3 data-i18n="exportOptions">Export Options</h3>
         <div class="export-options">
           <label class="option">
             <input type="checkbox" id="include-metadata" checked>
-            <span>Include Metadata</span>
+            <span data-i18n="includeMetadata">Include Metadata</span>
           </label>
           <label class="option">
             <input type="checkbox" id="flatten-data">
-            <span>Flatten Nested Data</span>
+            <span data-i18n="flattenData">Flatten Nested Data</span>
           </label>
           <label class="option">
             <input type="checkbox" id="include-timestamp" checked>
-            <span>Include Timestamp</span>
+            <span data-i18n="includeTimestamp">Include Timestamp</span>
           </label>
         </div>
       </div>
 
       <div class="section" id="export-preview-section" style="display: none;">
-        <h3>Export Preview</h3>
+        <h3 data-i18n="exportPreview">Export Preview</h3>
         <div class="export-preview">
           <pre id="export-preview-content"></pre>
         </div>
-        <button id="download-btn" class="btn btn-primary">Download</button>
+        <button id="download-btn" class="btn btn-primary" data-i18n="downloadButton">Download</button>
       </div>
     </div>
 

@@ -1,0 +1,234 @@
+{
+  "extensionName": {
+    "message": "HTML Element Selector",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Extract and retrieve specific HTML elements from web pages using CSS selectors, XPath, or visual element picker",
+    "description": "Description of the extension"
+  },
+  "popupTitle": {
+    "message": "Element Selector",
+    "description": "Title shown in popup"
+  },
+  "statusReady": {
+    "message": "Ready",
+    "description": "Status when extension is ready"
+  },
+  "tabSelect": {
+    "message": "Select",
+    "description": "Select tab label"
+  },
+  "tabExtract": {
+    "message": "Extract",
+    "description": "Extract tab label"
+  },
+  "tabExport": {
+    "message": "Export",
+    "description": "Export tab label"
+  },
+  "selectionMethod": {
+    "message": "Selection Method",
+    "description": "Selection method section title"
+  },
+  "visualPicker": {
+    "message": "Visual Picker",
+    "description": "Visual picker button text"
+  },
+  "cssSelector": {
+    "message": "CSS Selector",
+    "description": "CSS selector button text"
+  },
+  "xpath": {
+    "message": "XPath",
+    "description": "XPath button text"
+  },
+  "enterSelector": {
+    "message": "Enter Selector",
+    "description": "Enter selector section title"
+  },
+  "cssSelectorPlaceholder": {
+    "message": "Enter CSS selector (e.g., .class-name, #id, div.example)...",
+    "description": "Placeholder for CSS selector input"
+  },
+  "xpathPlaceholder": {
+    "message": "Enter XPath expression (e.g., //div[@class=\"example\"])...",
+    "description": "Placeholder for XPath input"
+  },
+  "testButton": {
+    "message": "Test",
+    "description": "Test button text"
+  },
+  "addButton": {
+    "message": "Add",
+    "description": "Add button text"
+  },
+  "selectedElements": {
+    "message": "Selected Elements",
+    "description": "Selected elements section title"
+  },
+  "elementsSelected": {
+    "message": "elements selected",
+    "description": "Text showing number of selected elements"
+  },
+  "clearButton": {
+    "message": "Clear",
+    "description": "Clear button text"
+  },
+  "extractionOptions": {
+    "message": "Extraction Options",
+    "description": "Extraction options section title"
+  },
+  "textContent": {
+    "message": "Text Content",
+    "description": "Text content option"
+  },
+  "htmlContent": {
+    "message": "HTML Content",
+    "description": "HTML content option"
+  },
+  "attributes": {
+    "message": "Attributes",
+    "description": "Attributes option"
+  },
+  "computedStyles": {
+    "message": "Computed Styles",
+    "description": "Computed styles option"
+  },
+  "positionSize": {
+    "message": "Position & Size",
+    "description": "Position and size option"
+  },
+  "links": {
+    "message": "Links",
+    "description": "Links option"
+  },
+  "images": {
+    "message": "Images",
+    "description": "Images option"
+  },
+  "includeChildren": {
+    "message": "Include Children",
+    "description": "Include children option"
+  },
+  "advancedOptions": {
+    "message": "Advanced Options",
+    "description": "Advanced options section title"
+  },
+  "maxDepth": {
+    "message": "Max Depth:",
+    "description": "Max depth label"
+  },
+  "extractDataButton": {
+    "message": "Extract Data",
+    "description": "Extract data button text"
+  },
+  "extractionResults": {
+    "message": "Extraction Results",
+    "description": "Extraction results section title"
+  },
+  "elementsProcessed": {
+    "message": "elements processed",
+    "description": "Text showing number of processed elements"
+  },
+  "exportFormat": {
+    "message": "Export Format",
+    "description": "Export format section title"
+  },
+  "jsonFormat": {
+    "message": "JSON",
+    "description": "JSON format option"
+  },
+  "csvFormat": {
+    "message": "CSV",
+    "description": "CSV format option"
+  },
+  "exportOptions": {
+    "message": "Export Options",
+    "description": "Export options section title"
+  },
+  "includeMetadata": {
+    "message": "Include Metadata",
+    "description": "Include metadata option"
+  },
+  "flattenData": {
+    "message": "Flatten Nested Data",
+    "description": "Flatten data option"
+  },
+  "includeTimestamp": {
+    "message": "Include Timestamp",
+    "description": "Include timestamp option"
+  },
+  "exportPreview": {
+    "message": "Export Preview",
+    "description": "Export preview section title"
+  },
+  "downloadButton": {
+    "message": "Download",
+    "description": "Download button text"
+  },
+  "statusActivatingPicker": {
+    "message": "Activating visual picker...",
+    "description": "Status when activating picker"
+  },
+  "statusClickElements": {
+    "message": "Click elements on the page to select them",
+    "description": "Status instruction for picker"
+  },
+  "statusTestingSelector": {
+    "message": "Testing selector...",
+    "description": "Status when testing selector"
+  },
+  "statusAddingElements": {
+    "message": "Adding elements...",
+    "description": "Status when adding elements"
+  },
+  "statusExtractingData": {
+    "message": "Extracting data...",
+    "description": "Status when extracting data"
+  },
+  "errorFailedActivatePicker": {
+    "message": "Failed to activate visual picker",
+    "description": "Error when picker activation fails"
+  },
+  "errorEnterSelector": {
+    "message": "Please enter a selector",
+    "description": "Error when no selector entered"
+  },
+  "errorInvalidSelector": {
+    "message": "Invalid selector or no elements found",
+    "description": "Error for invalid selector"
+  },
+  "errorFailedSelectElements": {
+    "message": "Failed to select elements",
+    "description": "Error when selection fails"
+  },
+  "errorFailedExtractData": {
+    "message": "Failed to extract data",
+    "description": "Error when extraction fails"
+  },
+  "errorNoDataToExport": {
+    "message": "No data to export. Please extract data first.",
+    "description": "Error when no data to export"
+  },
+  "errorDownloadFailed": {
+    "message": "Download failed",
+    "description": "Error when download fails"
+  },
+  "successSelectorValid": {
+    "message": "Selector is valid and elements are highlighted",
+    "description": "Success message for valid selector"
+  },
+  "successElementsAdded": {
+    "message": "Elements added to selection",
+    "description": "Success message when elements added"
+  },
+  "successSelectionCleared": {
+    "message": "Selection cleared",
+    "description": "Success message when selection cleared"
+  },
+  "successExportDownloaded": {
+    "message": "Export downloaded successfully",
+    "description": "Success message for download"
+  }
+}

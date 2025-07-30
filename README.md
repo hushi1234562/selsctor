@@ -8,6 +8,7 @@ A powerful browser extension for extracting and retrieving specific HTML element
 - **Data Extraction**: Extract text content, HTML, attributes, and computed styles
 - **Dynamic Content Support**: Handles JavaScript-loaded content with MutationObserver
 - **Export Options**: JSON and CSV export formats
+- **Multi-Language Support**: English and Chinese (Simplified) interface
 - **User-Friendly Interface**: Intuitive popup UI for configuration
 - **Universal Compatibility**: Works on all websites
 
@@ -63,7 +64,8 @@ selector/
 1. **Install**: Follow the [Installation Guide](INSTALLATION.md)
 2. **Learn**: Read the [Usage Guide](USAGE.md)
 3. **Test**: Open `test.html` in your browser and try the extension
-4. **Verify**: Run through the [Test Cases](TEST_CASES.md)
+4. **Test Chinese**: Open `test-i18n.html` for Chinese language testing
+5. **Verify**: Run through the [Test Cases](TEST_CASES.md)
 
 ## Key Features Implemented
 
@@ -95,6 +97,7 @@ selector/
 
 ### ✅ User Experience
 - **Intuitive Interface**: Clean, tabbed popup design
+- **Multi-Language Support**: English and Chinese (Simplified) localization
 - **Visual Feedback**: Element highlighting and tooltips
 - **Error Handling**: Comprehensive validation and user feedback
 - **Performance**: Optimized for large pages and complex selections
@@ -121,3 +124,35 @@ This extension is built with modern web technologies and follows Chrome Extensio
 - **CSS Grid/Flexbox**: Responsive popup layout
 - **MutationObserver**: Dynamic content detection
 - **Web APIs**: DOM manipulation, file downloads
+- **Chrome i18n API**: Multi-language support
+
+## Multi-Language Support
+
+The extension supports multiple languages with automatic detection based on browser settings:
+
+### Supported Languages
+- **English (en)**: Default language
+- **Chinese Simplified (zh_CN)**: 中文简体支持
+
+### Language Features
+- **Automatic Detection**: Uses browser's UI language setting
+- **Complete Localization**: All interface elements, messages, and feedback
+- **Localized Export**: File names and content adapt to selected language
+- **Cultural Adaptation**: Number and date formatting follows locale conventions
+
+### Adding New Languages
+To add support for additional languages:
+
+1. Create a new folder in `_locales/` (e.g., `_locales/fr/`)
+2. Copy `_locales/en/messages.json` to the new folder
+3. Translate all message values while keeping the keys unchanged
+4. Test the extension with the new locale
+
+### Language Files Structure
+```
+_locales/
+├── en/
+│   └── messages.json     # English translations
+└── zh_CN/
+    └── messages.json     # Chinese translations
+```
