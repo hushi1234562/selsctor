@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Element Selector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="title">Element Selector</h1>
+      <div class="status" id="status">Ready</div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tabs">
+      <button class="tab-button active" data-tab="select">Select</button>
+      <button class="tab-button" data-tab="extract">Extract</button>
+      <button class="tab-button" data-tab="export">Export</button>
+    </nav>
+
+    <!-- Select Tab -->
+    <div class="tab-content active" id="select-tab">
+      <div class="section">
+        <h3>Selection Method</h3>
+        <div class="method-buttons">
+          <button id="visual-picker-btn" class="method-btn">
+            <span class="icon">🎯</span>
+            Visual Picker
+          </button>
+          <button id="css-selector-btn" class="method-btn">
+            <span class="icon">📝</span>
+            CSS Selector
+          </button>
+          <button id="xpath-btn" class="method-btn">
+            <span class="icon">🔍</span>
+            XPath
+          </button>
+        </div>
+      </div>
+
+      <div class="section" id="selector-input-section" style="display: none;">
+        <h3>Enter Selector</h3>
+        <div class="input-group">
+          <textarea id="selector-input" placeholder="Enter CSS selector or XPath..."></textarea>
+          <button id="test-selector-btn" class="btn btn-secondary">Test</button>
+          <button id="add-selector-btn" class="btn btn-primary">Add</button>
+        </div>
+        <div id="selector-feedback" class="feedback"></div>
+      </div>
+
+      <div class="section">
+        <h3>Selected Elements</h3>
+        <div class="selected-count">
+          <span id="selected-count">0</span> elements selected
+          <button id="clear-selection-btn" class="btn btn-small">Clear</button>
+        </div>
+        <div id="selected-elements-list" class="elements-list"></div>
+      </div>
+    </div>
+
+    <!-- Extract Tab -->
+    <div class="tab-content" id="extract-tab">
+      <div class="section">
+        <h3>Extraction Options</h3>
+        <div class="options-grid">
+          <label class="option">
+            <input type="checkbox" id="extract-text" checked>
+            <span>Text Content</span>
+          </label>
+          <label class="option">
+            <input type="checkbox" id="extract-html">
+            <span>HTML Content</span>
+          </label>
+          <label class="option">
+            <input type="checkbox" id="extract-attributes" checked>
+            <span>Attributes</span>
+          </label>
+          <label class="option">
+            <input type="checkbox" id="extract-styles">
+            <span>Computed Styles</span>
+          </label>
+          <label class="option">
+            <input type="checkbox" id="extract-position">
+            <span>Position & Size</span>
+          </label>
+          <label class="option">
+            <input type="checkbox" id="extract-links" checked>
+            <span>Links</span>
+          </label>
+          <label class="option">
+            <input type="checkbox" id="extract-images" checked>
+            <span>Images</span>
+          </label>
+          <label class="option">
+            <input type="checkbox" id="include-children">
+            <span>Include Children</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Advanced Options</h3>
+        <div class="advanced-options">
+          <label class="option-row">
+            <span>Max Depth:</span>
+            <input type="number" id="max-depth" value="3" min="1" max="10">
+          </label>
+        </div>
+      </div>
+
+      <div class="section">
+        <button id="extract-data-btn" class="btn btn-primary btn-large">
+          Extract Data
+        </button>
+      </div>
+
+      <div class="section" id="extraction-results" style="display: none;">
+        <h3>Extraction Results</h3>
+        <div class="results-summary">
+          <span id="results-count">0</span> elements processed
+        </div>
+        <div id="results-preview" class="results-preview"></div>
+      </div>
+    </div>
+
+    <!-- Export Tab -->
+    <div class="tab-content" id="export-tab">
+      <div class="section">
+        <h3>Export Format</h3>
+        <div class="format-buttons">
+          <button id="export-json-btn" class="format-btn">
+            <span class="icon">📄</span>
+            JSON
+          </button>
+          <button id="export-csv-btn" class="format-btn">
+            <span class="icon">📊</span>
+            CSV
+          </button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Export Options</h3>
+        <div class="export-options">
+          <label class="option">
+            <input type="checkbox" id="include-metadata" checked>
+            <span>Include Metadata</span>
+          </label>
+          <label class="option">
+            <input type="checkbox" id="flatten-data">
+            <span>Flatten Nested Data</span>
+          </label>
+          <label class="option">
+            <input type="checkbox" id="include-timestamp" checked>
+            <span>Include Timestamp</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="section" id="export-preview-section" style="display: none;">
+        <h3>Export Preview</h3>
+        <div class="export-preview">
+          <pre id="export-preview-content"></pre>
+        </div>
+        <button id="download-btn" class="btn btn-primary">Download</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-info">
+        <span id="current-url" class="url-display"></span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
